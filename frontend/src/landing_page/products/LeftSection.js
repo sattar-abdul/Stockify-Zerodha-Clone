@@ -36,7 +36,7 @@ function LeftSection({
               <img src="media/images/googlePlayBadge.svg" />
             </a>
             <a href={appStore} style={{ marginLeft: "50px" }}>
-              <img src="media/images/appStoreBadge.svg" />
+              <img src="media/images/appstoreBadge.svg" />
             </a>
           </div>
         </div>
