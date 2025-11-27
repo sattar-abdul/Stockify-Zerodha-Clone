@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { API_BASE } from "../../config"; // <--- added import
+import { API_BASE, DASHBOARD_URL } from "../../config"; // <--- added import
 
 function Signup() {
   const navigate = useNavigate();
@@ -100,8 +100,8 @@ function Signup() {
       } catch { }
 
       if (data && data.token) {
-        // Redirect to external dashboard on port 3001
-        window.location.href = `http://localhost:3001?token=${data.token}`;
+        // Redirect to external dashboard
+        window.location.href = `${DASHBOARD_URL}?token=${data.token}`;
       } else {
         navigate("/login");
       }

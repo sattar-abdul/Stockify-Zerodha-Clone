@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FRONTEND_URL } from "../config";
 import Dashboard from "./Dashboard";
 import TopBar from "./TopBar";
 import { GeneralContextProvider } from "./GeneralContext";
@@ -16,7 +17,7 @@ const Home = () => {
 
     const token = localStorage.getItem("token");
     if (!token) {
-      window.location.href = "http://localhost:3000/login";
+      window.location.href = `${FRONTEND_URL}/login`;
     }
   }, []);
 

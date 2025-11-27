@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import GeneralContext from "./GeneralContext";
+import { FRONTEND_URL } from "../config";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -22,12 +23,12 @@ const Menu = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = `${FRONTEND_URL}/login`;
   };
 
   return (
     <div className="menu-container">
-      <Link to="http://localhost:3000">
+      <Link to={FRONTEND_URL}>
         <img src="logo.png" style={{ width: "40px" }} alt="Logo" />
       </Link>
 

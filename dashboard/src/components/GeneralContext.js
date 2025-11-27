@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BuyActionWindow from "./BuyActionWindow";
 import SellActionWindow from "./SellActionWindow";
+import { API_BASE } from "../config";
 
 const GeneralContext = React.createContext({
   openBuyWindow: (uid) => { },
@@ -18,7 +19,7 @@ export const GeneralContextProvider = (props) => {
   React.useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      fetch("http://localhost:5000/api/auth/me", {
+      fetch(`${API_BASE}/api/auth/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

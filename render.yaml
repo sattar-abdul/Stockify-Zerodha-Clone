@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: stockify-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: PORT
+        value: 5000
+
+  - type: web
+    name: stockify-frontend
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_BASE
+        fromService: stockify-backend
+        type: pserv
+        property: host
+      - key: REACT_APP_DASHBOARD_URL
+        fromService: stockify-dashboard
+        type: pserv
+        property: url
+
+  - type: web
+    name: stockify-dashboard
+    env: static
+    plan: free
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_BASE
+        fromService: stockify-backend
+        type: pserv
+        property: host
+      - key: REACT_APP_FRONTEND_URL
+        fromService: stockify-frontend
+        type: pserv
+        property: url
