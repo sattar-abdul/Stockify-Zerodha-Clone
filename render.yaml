@@ -21,13 +21,13 @@ services:
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_BASE
-        fromService: stockify-backend
-        type: pserv
-        property: host
+        fromService:
+          name: stockify-backend
+          property: url
       - key: REACT_APP_DASHBOARD_URL
-        fromService: stockify-dashboard
-        type: pserv
-        property: url
+        fromService:
+          name: stockify-dashboard
+          property: url
 
   - type: web
     name: stockify-dashboard
@@ -37,10 +37,10 @@ services:
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_BASE
-        fromService: stockify-backend
-        type: pserv
-        property: host
+        fromService:
+          name: stockify-backend
+          property: url
       - key: REACT_APP_FRONTEND_URL
-        fromService: stockify-frontend
-        type: pserv
-        property: url
+        fromService:
+          name: stockify-frontend
+          property: url
