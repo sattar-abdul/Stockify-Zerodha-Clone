@@ -13,9 +13,10 @@ services:
       - key: PORT
         value: 5000
 
-  - type: Static Site
+  - type: web
     name: stockify-frontend
     plan: free
+    runtime: static
     buildCommand: npm install && npm run build
     publishPath: ./build
     envVars:
@@ -24,9 +25,10 @@ services:
       - key: REACT_APP_DASHBOARD_URL
         value: https://REPLACE_WITH_DASHBOARD_URL.onrender.com
 
-  - type: Static Site
+  - type: web
     name: stockify-dashboard
     plan: free
+    runtime: static
     buildCommand: npm install && npm run build
     publishPath: ./build
     envVars:
