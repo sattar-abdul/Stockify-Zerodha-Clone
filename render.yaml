@@ -13,20 +13,6 @@ services:
         value: 5000
 
   - type: web
-    name: stockify-backend
-    env: node
-    plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    envVars:
-      - key: MONGO_URL
-        sync: false
-      - key: JWT_SECRET
-        sync: false
-      - key: PORT
-        value: 5000
-
-  - type: web
     name: stockify-frontend
     env: static
     buildCommand: npm install && npm run build
