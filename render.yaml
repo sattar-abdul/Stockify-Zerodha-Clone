@@ -1,6 +1,7 @@
 services:
   - type: web
     name: stockify-backend
+    root: backend
     env: node
     plan: free
     buildCommand: npm install
@@ -15,6 +16,7 @@ services:
 
   - type: web
     name: stockify-frontend
+    root: frontend
     env: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
@@ -26,6 +28,7 @@ services:
 
   - type: web
     name: stockify-dashboard
+    root: dashboard
     env: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./build
