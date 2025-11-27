@@ -7,27 +7,37 @@ services:
     startCommand: npm start
     envVars:
       - key: MONGO_URL
+services:
+  - type: web
+    name: stockify-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URL
         sync: false
       - key: JWT_SECRET
         sync: false
       - key: PORT
         value: 5000
 
-  - type: static
+  - type: web
     name: stockify-frontend
+    env: static
     buildCommand: npm install && npm run build
-    publishPath: ./build
+    staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_BASE
         value: https://REPLACE_WITH_BACKEND_URL.onrender.com
       - key: REACT_APP_DASHBOARD_URL
         value: https://REPLACE_WITH_DASHBOARD_URL.onrender.com
 
-  - type: static
+  - type: web
     name: stockify-dashboard
-    
+    env: static
     buildCommand: npm install && npm run build
-    publishPath: ./build
+    staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_BASE
         value: https://REPLACE_WITH_BACKEND_URL.onrender.com
