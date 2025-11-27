@@ -7,7 +7,11 @@ services:
     startCommand: npm start
     envVars:
       - key: MONGO_URL
-services:
+      - key: JWT_SECRET
+        sync: false
+      - key: PORT
+        value: 5000
+
   - type: web
     name: stockify-backend
     env: node
