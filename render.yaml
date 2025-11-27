@@ -21,13 +21,9 @@ services:
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_BASE
-        fromService:
-          name: stockify-backend
-          property: url
+        value: https://REPLACE_WITH_BACKEND_URL.onrender.com
       - key: REACT_APP_DASHBOARD_URL
-        fromService:
-          name: stockify-dashboard
-          property: url
+        value: https://REPLACE_WITH_DASHBOARD_URL.onrender.com
 
   - type: web
     name: stockify-dashboard
@@ -37,10 +33,6 @@ services:
     staticPublishPath: ./build
     envVars:
       - key: REACT_APP_API_BASE
-        fromService:
-          name: stockify-backend
-          property: url
+        value: https://REPLACE_WITH_BACKEND_URL.onrender.com
       - key: REACT_APP_FRONTEND_URL
-        fromService:
-          name: stockify-frontend
-          property: url
+        value: https://REPLACE_WITH_FRONTEND_URL.onrender.com
