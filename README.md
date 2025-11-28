@@ -52,3 +52,38 @@ Stockify is a MERN stack application designed to clone the Zerodha stock trading
         chart.js, react-chartjs-2: Charting
         react-router-dom: Routing
         emotion: Styling
+
+
+Finnhub's free API is used for fetching stock prices.
+
+## Deployment
+
+### Live URLs
+- **Frontend**: https://stockify-frontend-t72l.onrender.com
+- **Backend**: https://stockify-backend-rcs2.onrender.com
+- **Dashboard**: https://stockify-dashboard.onrender.com
+
+### Environment Variables
+
+#### Frontend (Render)
+```
+REACT_APP_API_BASE=https://stockify-backend-rcs2.onrender.com
+REACT_APP_DASHBOARD_URL=https://stockify-dashboard.onrender.com
+```
+
+#### Dashboard (Render)
+```
+REACT_APP_FINNHUB_API_KEY=your_finnhub_api_key
+```
+
+#### Backend (Render)
+```
+MONGO_URL=your_mongodb_connection_string
+JWT_SECRET=your_secure_secret_key
+PORT=5000
+```
+
+### Deployment Notes
+- The frontend automatically detects production environment and uses production URLs
+- Backend CORS is configured to allow requests from both frontend and dashboard domains
+- All three applications are deployed separately on Render
