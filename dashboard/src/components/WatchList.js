@@ -69,20 +69,20 @@ const WatchList = () => {
         label: "Price",
         data: stocks.map((stock) => stock.price),
         backgroundColor: [
-          "rgba(255, 99, 132, 0.5)",
-          "rgba(54, 162, 235, 0.5)",
-          "rgba(255, 206, 86, 0.5)",
-          "rgba(75, 192, 192, 0.5)",
-          "rgba(153, 102, 255, 0.5)",
-          "rgba(255, 159, 64, 0.5)",
+          "rgba(67, 97, 238, 0.5)", // Primary
+          "rgba(0, 184, 148, 0.5)", // Success
+          "rgba(255, 118, 117, 0.5)", // Danger
+          "rgba(253, 203, 110, 0.5)", // Warning
+          "rgba(116, 185, 255, 0.5)", // Info
+          "rgba(63, 55, 201, 0.5)", // Secondary
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
+          "rgba(67, 97, 238, 1)",
+          "rgba(0, 184, 148, 1)",
+          "rgba(255, 118, 117, 1)",
+          "rgba(253, 203, 110, 1)",
+          "rgba(116, 185, 255, 1)",
+          "rgba(63, 55, 201, 1)",
         ],
         borderWidth: 1,
       },
@@ -110,7 +110,9 @@ const WatchList = () => {
         })}
       </ul>
 
-      <DoughnutChart data={data} />
+      <div style={{ marginTop: '40px', padding: '20px' }}>
+        <DoughnutChart data={data} />
+      </div>
     </div>
   );
 };
@@ -126,15 +128,15 @@ const WatchListItem = ({ stock }) => {
   return (
     <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseExit}>
       <div className="item">
-        <p className={stock.isDown ? "down" : "up"}>{stock.name}</p>
-        <div className="itemInfo">
-          <span className="percent">{stock.percent}</span>
+        <span className={`symbol ${stock.isDown ? "down" : "up"}`}>{stock.name}</span>
+        <div className="item-info">
+          <span className="price">{stock.price}</span>
+          <span className={`percent ${stock.isDown ? "down" : "up"}`}>{stock.percent}</span>
           {stock.isDown ? (
             <KeyboardArrowDown className="down" />
           ) : (
             <KeyboardArrowUp className="up" />
           )}
-          <span className="price">{stock.price}</span>
         </div>
       </div>
       {showWatchlistActions && <WatchListActions uid={stock.name} />}
@@ -154,7 +156,7 @@ const WatchListActions = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="buy" onClick={() => openBuyWindow(uid)}>
+          <button className="btn btn-buy" onClick={() => openBuyWindow(uid)}>
             Buy
           </button>
         </Tooltip>
@@ -165,25 +167,8 @@ const WatchListActions = ({ uid }) => {
           arrow
           TransitionComponent={Grow}
         >
-          <button className="sell" onClick={() => openSellWindow(uid)}>
+          <button className="btn btn-sell" onClick={() => openSellWindow(uid)}>
             Sell
-          </button>
-        </Tooltip>
-
-        <Tooltip
-          title="Analytics (A)"
-          placement="top"
-          arrow
-          TransitionComponent={Grow}
-        >
-          <button className="action">
-            <BarChartOutlined className="icon" />
-          </button>
-        </Tooltip>
-
-        <Tooltip title="More" placement="top" arrow TransitionComponent={Grow}>
-          <button className="action">
-            <MoreHoriz className="icon" />
           </button>
         </Tooltip>
       </span>

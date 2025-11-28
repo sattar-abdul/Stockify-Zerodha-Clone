@@ -23,7 +23,6 @@ const Home = () => {
 
   return (
     <GeneralContextProvider>
-      <TopBar />
       <Dashboard />
     </GeneralContextProvider>
   );

@@ -48,62 +48,27 @@ const Menu = () => {
           <li>
             <Link
               style={{ textDecoration: "none" }}
-              to="/orders"
+              to="/holdings"
               onClick={() => handleMenuClick(1)}
             >
               <p className={selectedMenu === 1 ? activeMenuClass : menuClass}>
-                Orders
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/holdings"
-              onClick={() => handleMenuClick(2)}
-            >
-              <p className={selectedMenu === 2 ? activeMenuClass : menuClass}>
-                Holdings
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="/positions"
-              onClick={() => handleMenuClick(3)}
-            >
-              <p className={selectedMenu === 3 ? activeMenuClass : menuClass}>
-                Positions
-              </p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              style={{ textDecoration: "none" }}
-              to="funds"
-              onClick={() => handleMenuClick(4)}
-            >
-              <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>
-                Funds
+                My Holdings
               </p>
             </Link>
           </li>
         </ul>
-        <hr />
-        <div className="profile">
-          <div className="avatar">{getInitials(user?.name)}</div>
-          <p className="username">{user?.name || "USERID"}</p>
-        </div>
-        <div style={{ padding: "10px" }}>
-          <button
-            onClick={handleLogout}
-            className="btn btn-danger btn-sm"
-            style={{ width: "100%" }}
-          >
-            Logout
-          </button>
-        </div>
+      </div>
+
+      <div className="profile">
+        <div className="avatar">{getInitials(user?.name)}</div>
+        <p className="username">{user?.name || "USERID"}</p>
+        <button
+          onClick={handleLogout}
+          className="btn btn-sell"
+          style={{ marginLeft: "10px" }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
