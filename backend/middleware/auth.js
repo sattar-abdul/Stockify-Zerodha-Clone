@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const SECRET = process.env.JWT_SECRET || "change-me";
+const SECRET = process.env.JWT_SECRET;
 
 module.exports = function (requiredRole) {
   return (req, res, next) => {
